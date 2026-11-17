@@ -1,0 +1,23 @@
+[build]
+  publish = "static"
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/DejaVuSans.ttf"]
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/certificate-files/*"
+  to = "/.netlify/functions/api/certificate-files/:splat"
+  status = 200
+  force = true

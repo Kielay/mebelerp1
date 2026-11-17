@@ -1,0 +1,21 @@
+{
+  "name": "uchet-inventory-netlify",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "node --check netlify/functions/api.mjs && node --check static/app.js && node -e \"const fs=require('node:fs'); for (const f of ['static/index.html','static/style.css','static/app.js','netlify/functions/api.mjs','netlify/database/migrations/20261112120000_initial.sql','netlify/database/migrations/20261117130000_document_vat_mode.sql','netlify/database/migrations/20261117130100_product_price_without_vat.sql']) if(!fs.existsSync(f)) throw new Error('Missing '+f); console.log('Build checks passed')\""
+  },
+  "dependencies": {
+    "@netlify/database": "^2.0.3",
+    "pdfkit": "^0.17.2",
+    "pg": "^8.16.3",
+    "pdf-parse": "^1.1.1",
+    "jszip": "^3.10.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "netlify-cli": "^27.16.3"
+  }
+}
